@@ -162,10 +162,17 @@ const navItemVariants = {
 ===================================================== */
 
 export default function Sidebar() {
+  /*
+    Website load হলে Home active থাকবে
+  */
   const [activeSection, setActiveSection] = useState("home");
 
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  /*
+    Navigation button click করার সময়
+    auto scroll detection temporarily বন্ধ থাকবে
+  */
   const [isNavigating, setIsNavigating] = useState(false);
 
   /* =====================================================
@@ -173,63 +180,87 @@ export default function Sidebar() {
   ===================================================== */
 
   useEffect(() => {
-    let scrollTimeout;
+    let ticking = false;
 
-    const handleScroll = () => {
+    const updateActiveSection = () => {
       /*
-        যখন navigation button click করে smooth scroll হবে,
-        তখন scroll listener active menu change করবে না।
+        Button click করে smooth scroll চললে
+        automatic active section change করব না
       */
+      if (isNavigating) {
+        ticking = false;
+        return;
+      }
 
-      if (isNavigating) return;
+      /*
+        Website একদম উপরে থাকলে
+        Home forcefully active থাকবে
+      */
+      if (window.scrollY < 80) {
+        setActiveSection("home");
+        ticking = false;
+        return;
+      }
 
-      const scrollPosition = window.scrollY + 250;
+      /*
+        Viewport-এর top থেকে 180px নিচে
+        section detection point
+      */
+      const triggerPoint = 180;
 
       let currentSection = "home";
 
       menuItems.forEach((item) => {
         const section = document.getElementById(item.id);
 
-        if (section && section.offsetTop <= scrollPosition) {
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+
+        /*
+          Section trigger point cross করলে
+          সেটাকে active ধরব
+        */
+        if (rect.top <= triggerPoint) {
           currentSection = item.id;
         }
       });
 
       setActiveSection(currentSection);
 
-      /*
-        Scroll শেষ হওয়ার পরে final section check
-      */
-
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        const finalPosition = window.scrollY + 250;
-
-        let finalSection = "home";
-
-        menuItems.forEach((item) => {
-          const section = document.getElementById(item.id);
-
-          if (section && section.offsetTop <= finalPosition) {
-            finalSection = item.id;
-          }
-        });
-
-        setActiveSection(finalSection);
-      }, 100);
+      ticking = false;
     };
+
+    const handleScroll = () => {
+      /*
+        requestAnimationFrame ব্যবহার করায়
+        scroll অনেক smooth থাকবে
+      */
+      if (ticking) return;
+
+      ticking = true;
+
+      window.requestAnimationFrame(updateActiveSection);
+    };
+
+    /*
+      Initial Load
+    */
+    if (window.scrollY < 80) {
+      setActiveSection("home");
+    } else {
+      updateActiveSection();
+    }
 
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
 
-    handleScroll();
+    window.addEventListener("resize", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-
-      clearTimeout(scrollTimeout);
+      window.removeEventListener("resize", handleScroll);
     };
   }, [isNavigating]);
 
@@ -243,40 +274,35 @@ export default function Sidebar() {
     if (!section) return;
 
     /*
-      Immediately active state change
+      Click করার সঙ্গে সঙ্গে clicked item active
     */
-
     setActiveSection(id);
 
     /*
-      Scroll listener temporarily stop
+      Auto section detection বন্ধ
     */
-
     setIsNavigating(true);
 
     /*
-      Mobile drawer close
+      Mobile drawer বন্ধ
     */
-
     setMobileOpen(false);
 
     /*
-      Smooth scroll
+      Smooth Scroll
     */
-
     section.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
 
     /*
-      Smooth scrolling complete হওয়ার জন্য
-      ছোট delay
+      Smooth scrolling complete হওয়ার পরে
+      automatic detection আবার চালু হবে
     */
-
-    setTimeout(() => {
+    window.setTimeout(() => {
       setIsNavigating(false);
-    }, 800);
+    }, 900);
   };
 
   return (
@@ -310,9 +336,7 @@ export default function Sidebar() {
         ================================================= */}
 
         <div className="relative h-[265px] overflow-hidden">
-          {/* ================================================
-              BLUE GRADIENT
-          ================================================= */}
+          {/* Blue Gradient */}
 
           <motion.div
             initial={{
@@ -336,7 +360,7 @@ export default function Sidebar() {
               to-[#5663df]
             "
           >
-            {/* Decorative Circle */}
+            {/* Circle */}
 
             <motion.div
               initial={{
@@ -481,11 +505,7 @@ export default function Sidebar() {
                 <img
                   src="/images/profile1.jpeg"
                   alt="Md Moshiur Rahman"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                  "
+                  className="h-full w-full object-cover"
                 />
               </motion.div>
             </div>
@@ -508,35 +528,17 @@ export default function Sidebar() {
               text-center
             "
           >
-            <h2
-              className="
-                text-[17px]
-                font-bold
-                tracking-[-0.2px]
-                text-gray-700
-              "
-            >
+            <h2 className="text-[17px] font-bold tracking-[-0.2px] text-gray-700">
               Md Moshiur Rahman
             </h2>
 
-            <p
-              className="
-                mt-1
-                text-[11px]
-                font-medium
-                uppercase
-                tracking-[2px]
-                text-gray-400
-              "
-            >
+            <p className="mt-1 text-[11px] font-medium uppercase tracking-[2px] text-gray-400">
               Network Engineer
             </p>
           </motion.div>
         </div>
 
-        {/* =================================================
-            DIVIDER
-        ================================================= */}
+        {/* Divider */}
 
         <motion.div
           initial={{
@@ -557,18 +559,14 @@ export default function Sidebar() {
           "
         />
 
-        {/* =================================================
-            NAVIGATION
-        ================================================= */}
+        {/* Navigation */}
 
         <Navigation
           activeSection={activeSection}
           onNavigate={handleNavigation}
         />
 
-        {/* =================================================
-            THEME BUTTON
-        ================================================= */}
+        {/* Theme */}
 
         <motion.button
           type="button"
@@ -586,6 +584,7 @@ export default function Sidebar() {
             flex
             h-10
             w-10
+            cursor-pointer
             items-center
             justify-center
             rounded-full
@@ -595,10 +594,7 @@ export default function Sidebar() {
           "
           aria-label="Theme"
         >
-          <Moon
-            size={17}
-            strokeWidth={2}
-          />
+          <Moon size={17} />
         </motion.button>
       </motion.aside>
 
@@ -637,52 +633,29 @@ export default function Sidebar() {
           lg:hidden
         "
       >
-        {/* Mobile Profile */}
+        {/* Profile */}
 
         <div className="flex items-center gap-3">
-          <motion.div
-            whileTap={{
-              scale: 0.9,
-            }}
-            className="
-              h-12
-              w-12
-              overflow-hidden
-              rounded-full
-              border-2
-              border-[#6875F5]
-            "
-          >
+          <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-[#6875F5]">
             <img
               src="/images/profile1.jpeg"
               alt="Md Moshiur Rahman"
-              className="
-                h-full
-                w-full
-                object-cover
-              "
+              className="h-full w-full object-cover"
             />
-          </motion.div>
+          </div>
 
           <div>
             <p className="text-sm font-bold text-gray-700">
               Md Moshiur Rahman
             </p>
 
-            <p
-              className="
-                text-[10px]
-                uppercase
-                tracking-wider
-                text-gray-400
-              "
-            >
+            <p className="text-[10px] uppercase tracking-wider text-gray-400">
               Network Engineer
             </p>
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Menu */}
 
         <motion.button
           type="button"
@@ -692,13 +665,12 @@ export default function Sidebar() {
           whileTap={{
             scale: 0.9,
           }}
-          onClick={() =>
-            setMobileOpen((prev) => !prev)
-          }
+          onClick={() => setMobileOpen((prev) => !prev)}
           className="
             flex
             h-10
             w-10
+            cursor-pointer
             items-center
             justify-center
             rounded-xl
@@ -706,12 +678,8 @@ export default function Sidebar() {
             border-gray-200
             text-gray-700
           "
-          aria-label="Toggle menu"
         >
-          <AnimatePresence
-            mode="wait"
-            initial={false}
-          >
+          <AnimatePresence mode="wait" initial={false}>
             {mobileOpen ? (
               <motion.div
                 key="close"
@@ -769,12 +737,7 @@ export default function Sidebar() {
             exit={{
               opacity: 0,
             }}
-            className="
-              fixed
-              inset-0
-              z-40
-              lg:hidden
-            "
+            className="fixed inset-0 z-40 lg:hidden"
           >
             {/* Overlay */}
 
@@ -788,15 +751,8 @@ export default function Sidebar() {
               exit={{
                 opacity: 0,
               }}
-              onClick={() =>
-                setMobileOpen(false)
-              }
-              className="
-                absolute
-                inset-0
-                bg-black/40
-                backdrop-blur-[2px]
-              "
+              onClick={() => setMobileOpen(false)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
             />
 
             {/* Drawer */}
@@ -830,80 +786,23 @@ export default function Sidebar() {
             >
               {/* Mobile Profile */}
 
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -15,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.15,
-                }}
-                className="
-                  mb-5
-                  flex
-                  flex-col
-                  items-center
-                  border-b
-                  border-gray-100
-                  pb-6
-                "
-              >
-                <motion.div
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  className="
-                    h-20
-                    w-20
-                    overflow-hidden
-                    rounded-full
-                    border-4
-                    border-[#6875F5]
-                    p-1
-                    shadow-md
-                  "
-                >
+              <div className="mb-5 flex flex-col items-center border-b border-gray-100 pb-6">
+                <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[#6875F5] p-1 shadow-md">
                   <img
                     src="/images/profile1.jpeg"
                     alt="Md Moshiur Rahman"
-                    className="
-                      h-full
-                      w-full
-                      rounded-full
-                      object-cover
-                    "
+                    className="h-full w-full rounded-full object-cover"
                   />
-                </motion.div>
+                </div>
 
-                <h3
-                  className="
-                    mt-3
-                    text-base
-                    font-bold
-                    text-gray-700
-                  "
-                >
+                <h3 className="mt-3 text-base font-bold text-gray-700">
                   Md Moshiur Rahman
                 </h3>
 
-                <p
-                  className="
-                    mt-1
-                    text-[11px]
-                    uppercase
-                    tracking-widest
-                    text-gray-400
-                  "
-                >
+                <p className="mt-1 text-[11px] uppercase tracking-widest text-gray-400">
                   Network Engineer
                 </p>
-              </motion.div>
-
-              {/* Mobile Navigation */}
+              </div>
 
               <Navigation
                 activeSection={activeSection}
@@ -921,10 +820,7 @@ export default function Sidebar() {
    NAVIGATION COMPONENT
 ===================================================== */
 
-function Navigation({
-  activeSection,
-  onNavigate,
-}) {
+function Navigation({ activeSection, onNavigate }) {
   return (
     <motion.nav
       variants={navContainerVariants}
@@ -932,8 +828,6 @@ function Navigation({
       animate="visible"
       className="px-3 py-5"
     >
-      {/* Navigation Label */}
-
       <motion.p
         initial={{
           opacity: 0,
@@ -964,19 +858,13 @@ function Navigation({
         {menuItems.map((item) => {
           const Icon = item.icon;
 
-          const isActive =
-            activeSection === item.id;
+          const isActive = activeSection === item.id;
 
           return (
-            <motion.li
-              key={item.id}
-              variants={navItemVariants}
-            >
+            <motion.li key={item.id} variants={navItemVariants}>
               <motion.button
                 type="button"
-                onClick={() =>
-                  onNavigate(item.id)
-                }
+                onClick={() => onNavigate(item.id)}
                 whileHover={{
                   x: isActive ? 0 : 3,
                 }}
@@ -994,6 +882,8 @@ function Navigation({
                   flex
                   h-[50px]
                   w-full
+                  cursor-pointer
+                  select-none
                   items-center
                   gap-3
                   rounded-xl
@@ -1001,6 +891,8 @@ function Navigation({
                   text-left
                   text-[14px]
                   font-medium
+                  transition-colors
+                  duration-200
                   ${
                     isActive
                       ? "text-[#6875F5]"
@@ -1008,9 +900,7 @@ function Navigation({
                   }
                 `}
               >
-                {/* =========================================
-                    ACTIVE BACKGROUND
-                ========================================= */}
+                {/* Active Background */}
 
                 {isActive && (
                   <motion.div
@@ -1030,9 +920,7 @@ function Navigation({
                   />
                 )}
 
-                {/* =========================================
-                    ACTIVE LEFT LINE
-                ========================================= */}
+                {/* Active Left Line */}
 
                 {isActive && (
                   <motion.span
@@ -1055,9 +943,7 @@ function Navigation({
                   />
                 )}
 
-                {/* =========================================
-                    ICON
-                ========================================= */}
+                {/* Icon */}
 
                 <motion.span
                   animate={{
@@ -1069,9 +955,7 @@ function Navigation({
                       ? "#ffffff"
                       : "#6b7280",
 
-                    scale: isActive
-                      ? 1.05
-                      : 0.96,
+                    scale: isActive ? 1.05 : 0.96,
                   }}
                   transition={{
                     type: "spring",
@@ -1090,30 +974,13 @@ function Navigation({
                     rounded-lg
                   "
                 >
-                  <motion.div
-                    animate={{
-                      scale: isActive
-                        ? 1.05
-                        : 1,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 20,
-                    }}
-                  >
-                    <Icon
-                      size={17}
-                      strokeWidth={
-                        isActive ? 2.2 : 1.8
-                      }
-                    />
-                  </motion.div>
+                  <Icon
+                    size={17}
+                    strokeWidth={isActive ? 2.2 : 1.8}
+                  />
                 </motion.span>
 
-                {/* =========================================
-                    TEXT
-                ========================================= */}
+                {/* Text */}
 
                 <motion.span
                   animate={{
@@ -1133,9 +1000,7 @@ function Navigation({
                   {item.name}
                 </motion.span>
 
-                {/* =========================================
-                    ACTIVE DOT
-                ========================================= */}
+                {/* Active Dot */}
 
                 <AnimatePresence mode="wait">
                   {isActive && (

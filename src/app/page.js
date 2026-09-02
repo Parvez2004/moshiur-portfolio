@@ -14,12 +14,13 @@ import Video from "@/Component/Video";
 const sectionVariants = {
   hidden: {
     opacity: 0,
-    y: 35,
+    y: 30,
   },
 
   visible: {
     opacity: 1,
     y: 0,
+
     transition: {
       duration: 0.7,
       ease: [0.22, 1, 0.36, 1],
@@ -35,8 +36,7 @@ function Section({ children }) {
       whileInView="visible"
       viewport={{
         once: true,
-        amount: 0.08,
-        margin: "0px 0px -80px 0px",
+        amount: 0.05,
       }}
     >
       {children}
@@ -47,42 +47,31 @@ function Section({ children }) {
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-gray-100">
-      {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Content */}
       <div className="min-h-screen lg:ml-[250px]">
-        {/* Hero */}
-        <section>
-          <Hero />
-        </section>
+        <Hero />
 
-        {/* About */}
         <Section>
           <About />
         </Section>
 
-        {/* Services */}
         <Section>
           <Services />
         </Section>
 
-        {/* Resume */}
         <Section>
           <Resume />
         </Section>
 
-        {/* Gallery */}
         <Section>
           <Gallery />
         </Section>
 
-        {/* Video */}
         <Section>
           <Video />
         </Section>
 
-        {/* Certification */}
         <Section>
           <Certification />
         </Section>
