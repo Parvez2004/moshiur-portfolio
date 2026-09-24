@@ -2,37 +2,43 @@
 
 import {
   FaFacebookF,
-  FaGithub,
   FaLinkedinIn,
   FaInstagram,
+  FaTwitter,
+  FaBehance,
 } from "react-icons/fa";
 
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  const socialItems = [
-    {
-      icon: <FaFacebookF />,
-      label: "Facebook",
-      href: "#",
-    },
-    {
-      icon: <FaGithub />,
-      label: "GitHub",
-      href: "#",
-    },
-    {
-      icon: <FaLinkedinIn />,
-      label: "LinkedIn",
-      href: "#",
-    },
-    {
-      icon: <FaInstagram />,
-      label: "Instagram",
-      href: "#",
-    },
-  ];
+ const socialItems = [
+  {
+    icon: <FaFacebookF />,
+    label: "Facebook",
+    href: "YOUR_FACEBOOK_LINK",
+  },
+  {
+    icon: <FaLinkedinIn />,
+    label: "LinkedIn",
+    href: "YOUR_LINKEDIN_LINK",
+  },
+  {
+    icon: <FaInstagram />,
+    label: "Instagram",
+    href: "YOUR_INSTAGRAM_LINK",
+  },
+  {
+    icon: <FaTwitter />,
+    label: "Twitter",
+    href: "YOUR_TWITTER_LINK",
+  },
+  {
+    icon: <FaBehance />,
+    label: "Behance",
+    href: "YOUR_BEHANCE_LINK",
+  },
+];
 
   return (
     <section
@@ -204,7 +210,7 @@ export default function Hero() {
           >
             <img
               src="/images/profile1.jpeg"
-              alt="Md Moshiur Rahman"
+              alt="Mohammad Moshiur Rahman"
               className="h-full w-full object-cover"
             />
           </motion.div>
@@ -215,7 +221,7 @@ export default function Hero() {
         ====================================================== */}
 
         <motion.h1
-          className="text-4xl font-extrabold tracking-tight md:text-6xl"
+          className="text-4xl font-extrabold tracking-tight md:text-4xl"
           variants={{
             hidden: {
               opacity: 0,
@@ -231,7 +237,7 @@ export default function Hero() {
             ease: "easeOut",
           }}
         >
-          Md Moshiur Rahman
+          Mohammad Moshiur Rahman
         </motion.h1>
 
         {/* Underline */}
@@ -272,7 +278,7 @@ export default function Hero() {
           <span className="font-light">I&apos;m a</span>
 
           <span className="font-semibold text-[#8f9aff]">
-            Network Engineer
+            Network & Hardware Engineer | Graphic Designer 
           </span>
 
           <motion.span

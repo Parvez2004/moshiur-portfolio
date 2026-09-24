@@ -4,32 +4,19 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Eye, X, ZoomIn } from "lucide-react";
 
-const galleryItems = [
-  {
-    image: "/images/gallery/project-1.jpg",
-    alt: "Network Infrastructure",
-  },
-  {
-    image: "/images/gallery/project-2.jpg",
-    alt: "Network Monitoring",
-  },
-  {
-    image: "/images/gallery/project-3.jpg",
-    alt: "Server Infrastructure",
-  },
-  {
-    image: "/images/gallery/project-4.jpg",
-    alt: "Network Configuration",
-  },
-  {
-    image: "/images/gallery/project-5.jpg",
-    alt: "Network Operations",
-  },
-  {
-    image: "/images/gallery/project-6.jpg",
-    alt: "Network Security",
-  },
-];
+/* ============================================================
+   GALLERY ITEMS
+   13.jpg থেকে 65.jpg পর্যন্ত
+============================================================ */
+
+const galleryItems = Array.from({ length: 53 }, (_, index) => {
+  const imageNumber = index + 13;
+
+  return {
+    image: `/images/gallery/${imageNumber}.jpg`,
+    alt: `Gallery Image ${imageNumber}`,
+  };
+});
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -50,22 +37,43 @@ export default function Gallery() {
         id="gallery"
         className="relative overflow-hidden bg-gray-50 px-5 py-20 sm:px-8 lg:px-12"
       >
-        {/* Background Decoration */}
+        {/* =====================================================
+            BACKGROUND DECORATION
+        ====================================================== */}
+
         <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#6875F5]/10 blur-3xl" />
 
         <div className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-purple-400/10 blur-3xl" />
 
-        {/* Same Width as Other Sections */}
+        {/* =====================================================
+            CONTAINER
+        ====================================================== */}
+
         <div className="relative mx-auto w-full max-w-6xl">
-          {/* ================= HEADING ================= */}
+          {/* ===================================================
+              HEADING
+          ==================================================== */}
+
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
             className="mx-auto mb-12 max-w-2xl text-center"
           >
             {/* Small Line */}
+
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-[2px] w-10 bg-[#6875F5]" />
 
@@ -77,6 +85,7 @@ export default function Gallery() {
             </div>
 
             {/* Main Heading */}
+
             <h2 className="text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">
               My{" "}
               <span className="text-[#6875F5]">
@@ -85,13 +94,17 @@ export default function Gallery() {
             </h2>
 
             {/* Description */}
+
             <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-500 sm:text-base">
-              A collection of network infrastructure, monitoring,
-              server environments and technical work.
+              A collection of network infrastructure, hardware, technical
+              work and creative design projects.
             </p>
           </motion.div>
 
-          {/* ================= GALLERY GRID ================= */}
+          {/* ===================================================
+              GALLERY GRID
+          ==================================================== */}
+
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryItems.map((item, index) => (
               <motion.div
@@ -110,7 +123,7 @@ export default function Gallery() {
                 }}
                 transition={{
                   duration: 0.55,
-                  delay: index * 0.08,
+                  delay: (index % 6) * 0.08,
                 }}
                 whileHover={{
                   y: -6,
@@ -119,16 +132,20 @@ export default function Gallery() {
                 className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-2xl"
               >
                 {/* Image */}
+
                 <img
                   src={item.image}
                   alt={item.alt}
+                  loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
 
                 {/* Dark Hover Overlay */}
+
                 <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/45" />
 
                 {/* Center Eye */}
+
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     initial={{
@@ -148,6 +165,7 @@ export default function Gallery() {
                 </div>
 
                 {/* Top Right Zoom */}
+
                 <div className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#6875F5] opacity-0 shadow-md transition-all duration-300 group-hover:opacity-100">
                   <ZoomIn size={17} />
                 </div>
@@ -155,7 +173,10 @@ export default function Gallery() {
             ))}
           </div>
 
-          {/* ================= BOTTOM TEXT ================= */}
+          {/* ===================================================
+              BOTTOM TEXT
+          ==================================================== */}
+
           <motion.div
             initial={{
               opacity: 0,
@@ -188,19 +209,30 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ================= LIGHTBOX ================= */}
+      {/* =====================================================
+          LIGHTBOX
+      ====================================================== */}
 
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
             onClick={closeImage}
             className="fixed inset-0 z-[9999] flex cursor-pointer items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
           >
             {/* Close Button */}
+
             <motion.button
               initial={{
                 opacity: 0,
@@ -221,7 +253,8 @@ export default function Gallery() {
               <X size={23} />
             </motion.button>
 
-            {/* Image */}
+            {/* Full Image */}
+
             <motion.div
               initial={{
                 opacity: 0,

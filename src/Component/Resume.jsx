@@ -4,43 +4,41 @@ import { motion } from "framer-motion";
 import {
   GraduationCap,
   BriefcaseBusiness,
-  Network,
   Router,
-  Server,
   ShieldCheck,
-  Activity,
   Cable,
   Wifi,
+  HardDrive,
 } from "lucide-react";
 
 /* ============================================================
-   NETWORKING SKILLS
+   TECHNICAL SKILLS
 ============================================================ */
 
 const skills = [
   {
-    name: "TCP/IP & Networking",
+    name: "Network Configuration",
     percentage: 90,
   },
   {
-    name: "Routing & Switching",
-    percentage: 85,
-  },
-  {
-    name: "Network Troubleshooting",
+    name: "MikroTik & Routing",
     percentage: 88,
   },
   {
+    name: "Network Troubleshooting",
+    percentage: 90,
+  },
+  {
     name: "Network Monitoring",
-    percentage: 82,
+    percentage: 85,
+  },
+  {
+    name: "Hardware Troubleshooting",
+    percentage: 88,
   },
   {
     name: "LAN / WAN / VLAN",
     percentage: 86,
-  },
-  {
-    name: "Network Security",
-    percentage: 78,
   },
 ];
 
@@ -50,18 +48,29 @@ const skills = [
 
 const education = [
   {
-    year: "2023 - Present",
-    title: "Bachelor of Science in Computer Science",
-    place: "University / Institution Name",
+    year: "2018",
+    title: "Junior School Certificate (JSC)",
+    place: "Narayanpur Palli Union Institution",
     description:
-      "Currently pursuing a degree in Computer Science with a strong interest in networking, computer systems, network infrastructure and information technology.",
+      "Completed Junior School Certificate from Narayanpur Palli Union Institution.",
   },
   {
-    year: "2021 - 2023",
-    title: "Higher Secondary Certificate",
-    place: "College Name",
-    description:
-      "Completed higher secondary education with a strong foundation in mathematics, computer science and technical studies.",
+    year: "2020",
+    title: "Secondary School Certificate (SSC)",
+    place: "Narayanpur Palli Union Institution",
+    description: "Completed Secondary School Certificate in Science group.",
+  },
+  {
+    year: "2024",
+    title: "Diploma in Engineering",
+    place: "Barishal Polytechnic Institute",
+    description: "Department: Computer Science & Technology.",
+  },
+  {
+    year: "2026 – Present",
+    title: "Bachelor of Science (BSC)",
+    place: "Uttara University",
+    description: "Department: Computer Science & Engineering.",
   },
 ];
 
@@ -71,18 +80,32 @@ const education = [
 
 const experience = [
   {
-    year: "2025 - Present",
-    title: "Network Engineer",
-    place: "Company / Organization",
+    year: "July 2024 – September 2024",
+    title: "Industrial Attachment (Data Center)",
+    place: "One Sky Communication Pvt. LTD",
     description:
-      "Working with network infrastructure, monitoring, troubleshooting and maintaining reliable network connectivity. Focused on network performance, incident handling and system availability.",
+      "Completed industrial attachment with practical exposure to Data Center and IT infrastructure environments.",
   },
   {
-    year: "2024 - 2025",
-    title: "Junior Network / NOC Engineer",
-    place: "Company / Organization",
+    year: "October 2024 – April 2025",
+    title: "Customer Support Executive",
+    place: "Expert Online",
     description:
-      "Assisted with network monitoring, connectivity troubleshooting, system support and resolving network-related incidents while maintaining service availability.",
+      "Worked as a Customer Support Executive, providing customer assistance and handling service-related support.",
+  },
+  {
+    year: "May 2025 – August 2025",
+    title: "Intern – Hardware Engineer",
+    place: "1000Fix Services LTD",
+    description:
+      "Worked with laptop and desktop hardware, troubleshooting, maintenance and technical support.",
+  },
+  {
+    year: "August 2025 – Present",
+    title: "Network Engineer",
+    place: "Dot Internet",
+    description:
+      "Working as a Network Engineer with network operations, monitoring, troubleshooting and technical support.",
   },
 ];
 
@@ -108,11 +131,11 @@ function TimelineItem({ item, Icon, index }) {
       }}
       transition={{
         duration: 0.6,
-        delay: index * 0.15,
+        delay: index * 0.12,
         ease: "easeOut",
       }}
     >
-      {/* Timeline Dot */}
+      {/* Timeline Icon */}
 
       <motion.div
         className="absolute left-0 top-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#6875F5] text-white shadow-lg shadow-[#6875F5]/20"
@@ -127,7 +150,7 @@ function TimelineItem({ item, Icon, index }) {
         <Icon size={18} />
       </motion.div>
 
-      {/* Content Card */}
+      {/* Timeline Card */}
 
       <motion.div
         className="group rounded-2xl border border-gray-100 bg-gray-50/70 p-6 shadow-sm transition-colors duration-300 hover:border-[#6875F5]/20 hover:bg-white"
@@ -148,9 +171,9 @@ function TimelineItem({ item, Icon, index }) {
           {item.title}
         </h3>
 
-        {/* Place */}
+        {/* Institute / Company */}
 
-        <p className="mt-1 text-sm font-medium text-[#6875F5]">
+        <p className="mt-1 text-sm font-semibold text-[#6875F5]">
           {item.place}
         </p>
 
@@ -207,7 +230,6 @@ export default function Resume() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-
         {/* ====================================================
             SECTION HEADING
         ===================================================== */}
@@ -238,12 +260,10 @@ export default function Resume() {
             Resume
           </h2>
 
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-500">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-gray-500">
             My academic background, professional experience and technical
-            expertise in network engineering and infrastructure.
+            journey in networking, computer hardware and IT infrastructure.
           </p>
-
-          {/* Animated Line */}
 
           <motion.div
             className="mx-auto mt-5 h-1 rounded-full bg-[#6875F5]"
@@ -268,7 +288,6 @@ export default function Resume() {
         ===================================================== */}
 
         <div className="grid gap-12 lg:grid-cols-2">
-
           {/* ==================================================
               EDUCATION
           =================================================== */}
@@ -290,8 +309,6 @@ export default function Resume() {
               duration: 0.7,
             }}
           >
-            {/* Heading */}
-
             <div className="mb-8 flex items-center gap-3">
               <motion.div
                 className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#6875F5]/10 text-[#6875F5]"
@@ -314,17 +331,14 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* Timeline */}
+            {/* Education Timeline */}
 
             <div className="relative space-y-6">
-
-              {/* Vertical Line */}
-
               <div className="absolute bottom-5 left-5 top-5 w-px bg-[#6875F5]/20" />
 
               {education.map((item, index) => (
                 <TimelineItem
-                  key={item.title}
+                  key={`${item.title}-${item.year}`}
                   item={item}
                   Icon={GraduationCap}
                   index={index}
@@ -354,8 +368,6 @@ export default function Resume() {
               duration: 0.7,
             }}
           >
-            {/* Heading */}
-
             <div className="mb-8 flex items-center gap-3">
               <motion.div
                 className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#6875F5]/10 text-[#6875F5]"
@@ -378,17 +390,14 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* Timeline */}
+            {/* Experience Timeline */}
 
             <div className="relative space-y-6">
-
-              {/* Vertical Line */}
-
               <div className="absolute bottom-5 left-5 top-5 w-px bg-[#6875F5]/20" />
 
               {experience.map((item, index) => (
                 <TimelineItem
-                  key={item.title}
+                  key={`${item.title}-${item.place}`}
                   item={item}
                   Icon={BriefcaseBusiness}
                   index={index}
@@ -420,26 +429,22 @@ export default function Resume() {
             duration: 0.7,
           }}
         >
-          {/* Skills Heading */}
-
           <div className="mb-10 text-center">
             <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-[#6875F5]">
               Technical Expertise
             </p>
 
             <h3 className="text-3xl font-bold text-gray-800">
-              Network Skills
+              Technical Skills
             </h3>
 
             <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-gray-500">
-              Core networking technologies and technical areas I am
-              continuously developing.
+              Core networking and hardware technologies I work with and
+              continuously develop.
             </p>
           </div>
 
-          {/* ==================================================
-              SKILL GRID
-          =================================================== */}
+          {/* Skill Progress */}
 
           <div className="grid gap-x-10 gap-y-7 lg:grid-cols-2">
             {skills.map((skill, index) => (
@@ -462,8 +467,6 @@ export default function Resume() {
                   delay: index * 0.08,
                 }}
               >
-                {/* Skill Header */}
-
                 <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#6875F5]" />
@@ -477,8 +480,6 @@ export default function Resume() {
                     {skill.percentage}%
                   </span>
                 </div>
-
-                {/* Progress Background */}
 
                 <div className="h-2.5 overflow-hidden rounded-full bg-gray-100">
                   <motion.div
@@ -498,8 +499,6 @@ export default function Resume() {
                       ease: "easeOut",
                     }}
                   >
-                    {/* Progress Shine */}
-
                     <motion.div
                       className="absolute inset-y-0 left-0 w-16 bg-white/25 blur-sm"
                       animate={{
@@ -520,7 +519,7 @@ export default function Resume() {
         </motion.div>
 
         {/* ====================================================
-            NETWORK TECHNOLOGY CARDS
+            TECHNOLOGY CARDS
         ===================================================== */}
 
         <motion.div
@@ -544,25 +543,25 @@ export default function Resume() {
           {[
             {
               icon: Router,
-              title: "Routing",
-              text: "Routing & IP fundamentals",
+              title: "MikroTik",
+              text: "Routing & configuration",
             },
             {
               icon: Cable,
-              title: "Switching",
-              text: "LAN, VLAN & switching",
+              title: "Networking",
+              text: "LAN, WAN & VLAN",
             },
             {
-              icon: Wifi,
-              title: "Connectivity",
-              text: "Network connectivity",
+              icon: HardDrive,
+              title: "Hardware",
+              text: "Laptop & desktop support",
             },
             {
               icon: ShieldCheck,
               title: "Security",
-              text: "Network security basics",
+              text: "Firewall & network security",
             },
-          ].map((item, index) => {
+          ].map((item) => {
             const Icon = item.icon;
 
             return (
@@ -589,7 +588,7 @@ export default function Resume() {
                 </motion.div>
 
                 <div>
-                  <h4 className="text-sm font-bold text-gray-800 group-hover:text-[#6875F5]">
+                  <h4 className="text-sm font-bold text-gray-800 transition-colors group-hover:text-[#6875F5]">
                     {item.title}
                   </h4>
 
@@ -603,7 +602,7 @@ export default function Resume() {
         </motion.div>
 
         {/* ====================================================
-            NOC STATUS
+            STATUS
         ===================================================== */}
 
         <motion.div
@@ -637,7 +636,7 @@ export default function Resume() {
             />
 
             <span className="text-xs font-medium text-gray-500">
-              Network Infrastructure • Monitoring • Troubleshooting
+              Network Engineering • Hardware • IT Infrastructure
             </span>
           </div>
         </motion.div>

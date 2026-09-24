@@ -504,7 +504,7 @@ export default function Sidebar() {
               >
                 <img
                   src="/images/profile1.jpeg"
-                  alt="Md Moshiur Rahman"
+                  alt="Mohammad Moshiur Rahman"
                   className="h-full w-full object-cover"
                 />
               </motion.div>
@@ -529,7 +529,7 @@ export default function Sidebar() {
             "
           >
             <h2 className="text-[17px] font-bold tracking-[-0.2px] text-gray-700">
-              Md Moshiur Rahman
+              Mohammad Moshiur Rahman
             </h2>
 
             <p className="mt-1 text-[11px] font-medium uppercase tracking-[2px] text-gray-400">
@@ -639,14 +639,14 @@ export default function Sidebar() {
           <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-[#6875F5]">
             <img
               src="/images/profile1.jpeg"
-              alt="Md Moshiur Rahman"
+              alt="Mohammad Moshiur Rahman"
               className="h-full w-full object-cover"
             />
           </div>
 
           <div>
             <p className="text-sm font-bold text-gray-700">
-              Md Moshiur Rahman
+              Mohammad Moshiur Rahman
             </p>
 
             <p className="text-[10px] uppercase tracking-wider text-gray-400">
@@ -790,13 +790,13 @@ export default function Sidebar() {
                 <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[#6875F5] p-1 shadow-md">
                   <img
                     src="/images/profile1.jpeg"
-                    alt="Md Moshiur Rahman"
+                    alt="Mohammad Moshiur Rahman"
                     className="h-full w-full rounded-full object-cover"
                   />
                 </div>
 
                 <h3 className="mt-3 text-base font-bold text-gray-700">
-                  Md Moshiur Rahman
+                  Mohammad Moshiur Rahman
                 </h3>
 
                 <p className="mt-1 text-[11px] uppercase tracking-widest text-gray-400">

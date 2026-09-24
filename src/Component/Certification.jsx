@@ -6,40 +6,139 @@ import { Award, Eye, X } from "lucide-react";
 
 const certifications = [
   {
-    title: "CCNA",
-    description:
-      "Networking fundamentals, routing, switching and network troubleshooting.",
-    image: "/certificates/images.jpg",
+    title: "26th Rover Mate Course",
+    description: "Certificate from Bangladesh Scouts.",
+    image: "/certificates/26th ROVER MATE COURSE - BANGLADESH SCOUTS.jpg",
   },
   {
-    title: "Network Security",
-    description:
-      "Fundamentals of network security, access control and secure infrastructure.",
-    image: "/certificates/images.jpg",
+    title: "Bangladesh Scouts - Achievement",
+    description: "Achievement certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - ACHIEVEMENT.jpg",
   },
   {
-    title: "Network Administration",
-    description:
-      "Practical knowledge of network configuration, management and monitoring.",
-    image: "/certificates/images.jpg",
+    title: "Bangladesh Scouts - Achievement",
+    description: "Achievement certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - ACHIEVEMENT(1).jpg",
   },
   {
-    title: "Linux Administration",
-    description:
-      "Essential Linux system administration and server management skills.",
-    image: "/certificates/images.jpg",
+    title: "Bangladesh Scouts - Achievement",
+    description: "Achievement certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - ACHIEVEMENT(2).jpg",
   },
   {
-    title: "MikroTik",
-    description:
-      "Router configuration, firewall, routing and MikroTik network management.",
-    image: "/certificates/images.jpg",
+    title: "Bangladesh Scouts - Achievement",
+    description: "Achievement certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - ACHIEVEMENT(3).jpg",
   },
   {
-    title: "IT Support",
-    description:
-      "Technical support, troubleshooting and basic IT infrastructure management.",
-    image: "/certificates/images.jpg",
+    title: "Bangladesh Scouts Camp Certificate 2015",
+    description: "Camp participation certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - CAMP CERTIFICATE 2015.jpg",
+  },
+  {
+    title: "Bangladesh Scouts Camp Certificate 2016",
+    description: "Camp participation certificate from Bangladesh Scouts.",
+    image: "/certificates/BANGLADESH SCOUTS - CAMP CERTIFICATE 2016.jpg",
+  },
+  {
+    title: "BBDS District Co-Ordinator",
+    description: "District Co-Ordinator certificate for 2023-2024.",
+    image: "/certificates/BBDS DISTRICT CO-ORDINATOR 2023-2024.jpg",
+  },
+  {
+    title: "BPI Scout Completion Certificate",
+    description: "Scout completion certificate from Barishal Polytechnic Institute.",
+    image: "/certificates/BPI SCOUT COMPLETATION CERTIFICATE.jpg",
+  },
+  {
+    title: "Communication Secrets",
+    description: "Communication skills course certificate from 10 Minute School.",
+    image: "/certificates/COMMUNICATION SECRETS - 10 MINUTES SCHOOL.jpg",
+  },
+  {
+    title: "Community Service 2022",
+    description: "Community service participation certificate.",
+    image: "/certificates/COMMUNITY SERVICE - 2022.jpg",
+  },
+  {
+    title: "Computer Operation Level III",
+    description: "Computer Operation Level III certification under BTEB.",
+    image: "/certificates/COMPUTER OPERATION LEVEL - III (BTEB).jpg",
+  },
+  {
+    title: "Diploma Appeared Certificate",
+    description: "Diploma appeared certificate from Barishal Polytechnic Institute.",
+    image: "/certificates/DIPLOMA APPEARED CERTIFICATE - BPI.jpg",
+  },
+  {
+    title: "EIM Level I",
+    description: "EIM Level I certification under BTEB.",
+    image: "/certificates/EIM LEVEL - I (BTEB).jpg",
+  },
+  {
+    title: "English Speaking",
+    description: "English Speaking course certificate from 10 Minute School.",
+    image: "/certificates/ENGLISH SPEAKING - 10 MINUTES SCHOOL.jpg",
+  },
+  {
+    title: "FET Test",
+    description: "English proficiency related certificate from British Council.",
+    image: "/certificates/FET TEST - BRITISH COUNCIL.jpg",
+  },
+  {
+    title: "Freelancing in Data Entry",
+    description: "Data Entry freelancing course certificate from 10 Minute School.",
+    image: "/certificates/FREELANCING IN DATA ENTRY - 10 MINUTES SCHOOL.jpg",
+  },
+  {
+    title: "Graphics Design",
+    description: "Graphic Design training certificate from ICT Division.",
+    image: "/certificates/GRAPHICS DESIGN - ICT DIVISION.jpg",
+  },
+  {
+    title: "Graphics Design Level II",
+    description: "Graphics Design Level II certification under BTEB.",
+    image: "/certificates/GRAPHICS DESIGN LEVEL - II (BTEB).jpg",
+  },
+  {
+    title: "IT Support Level I",
+    description: "IT Support Level I certification under BTEB.",
+    image: "/certificates/IT SUPPORT LEVEL - I (BTEB).jpg",
+  },
+  {
+    title: "Junior School Certificate",
+    description: "Junior School Certificate (JSC).",
+    image: "/certificates/JUNIOR SCHOOL CERTIFICATE (JSC).jpg",
+  },
+  {
+    title: "Data Center Internship",
+    description: "Data Center internship certificate from One Sky Communication.",
+    image: "/certificates/ONE SKY COMMUNICATION DATA CENTER INTERNSHIP.jpg",
+  },
+  {
+    title: "Presentation & Public Speaking",
+    description: "Presentation and Public Speaking course from 10 Minute School.",
+    image: "/certificates/PRESENTATION & PUBLIC SPEAKING - 10 MINUTES SCHOOL.jpg",
+  },
+  {
+    title: "Secondary School Certificate",
+    description: "Secondary School Certificate (SSC).",
+    image: "/certificates/SECONDARY SCHOOL CERTIFICATE (SSC).jpg",
+  },
+  {
+    title: "Skill Development Course",
+    description: "Skill Development Course certificate from Bangladesh Scouts.",
+    image: "/certificates/SKILL DEVELOPMENT COURSE - BANGLADESH SCOUTS.jpg",
+  },
+  {
+    title: "Student Hacks",
+    description: "Student Hacks course certificate from 10 Minute School.",
+    image: "/certificates/STUDENT HACKS - 10 MINUTES SCHOOL.jpg",
+  },
+  {
+    title: "World Literature Award 2017",
+    description: "World Literature Award received in 2017.",
+    image: "/certificates/WORLD LITERATURE AWARD - 2017.jpg",
   },
 ];
 

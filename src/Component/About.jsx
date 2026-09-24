@@ -4,52 +4,61 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Download,
-  Network,
-  Server,
-  ShieldCheck,
-  Activity,
+  CalendarDays,
+  MapPin,
+  GraduationCap,
+  BookOpen,
+  Globe,
+  Mail,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 
 export default function About() {
   const infoItems = [
     {
-      label: "Name",
-      value: "Md Moshiur Rahman",
+      icon: CalendarDays,
+      label: "Birthday",
+      value: "24 March 2004",
     },
     {
-      label: "Profession",
-      value: "Network Engineer",
+      icon: MapPin,
+      label: "City",
+      value: "Dhaka, Bangladesh",
     },
     {
-      label: "Specialization",
-      value: "Network & NOC",
+      icon: GraduationCap,
+      label: "Study",
+      value: "Uttara University",
     },
     {
-      label: "Location",
-      value: "Bangladesh",
-    },
-  ];
-
-  const skills = [
-    {
-      icon: Network,
-      title: "Network Infrastructure",
-      text: "LAN, WAN, TCP/IP, VLAN & routing fundamentals",
+      icon: BookOpen,
+      label: "Degree",
+      value: "Bachelor Of Science",
     },
     {
-      icon: Activity,
-      title: "Network Monitoring",
-      text: "Monitoring network performance, uptime & incidents",
+      icon: Globe,
+      label: "Website",
+      value: "moshiurrahman.info",
+      href: "https://moshiurrahman.info",
     },
     {
-      icon: Server,
-      title: "Server & Systems",
-      text: "Basic server administration and system troubleshooting",
+      icon: Mail,
+      label: "Email",
+      value: "mrmoshiur.info@gmail.com",
+      href: "mailto:mrmoshiur.info@gmail.com",
     },
     {
-      icon: ShieldCheck,
-      title: "Network Security",
-      text: "Understanding firewall, access control & security practices",
+      icon: Phone,
+      label: "Phone",
+      value: "+8801315-462223",
+      href: "tel:+8801315462223",
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "+8801315-462223",
+      href: "https://wa.me/8801315462223",
     },
   ];
 
@@ -58,10 +67,7 @@ export default function About() {
       id="about"
       className="relative overflow-hidden bg-white px-6 py-20 md:px-12 lg:px-20"
     >
-      {/* =====================================================
-          BACKGROUND DECORATION
-      ====================================================== */}
-
+      {/* Background Decoration */}
       <motion.div
         className="pointer-events-none absolute -right-32 top-20 h-72 w-72 rounded-full bg-[#6875F5]/5 blur-3xl"
         animate={{
@@ -89,11 +95,7 @@ export default function About() {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-
-        {/* =====================================================
-            SECTION HEADING
-        ====================================================== */}
-
+        {/* Section Heading */}
         <motion.div
           className="mb-14 text-center"
           initial={{
@@ -117,14 +119,20 @@ export default function About() {
           </p>
 
           <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
-            Let&apos;s Introduce Myself
+            Hello, I&apos;m Mohammad Moshiur Rahman
           </h2>
 
           <motion.div
             className="mx-auto mt-4 h-1 rounded-full bg-[#6875F5]"
-            initial={{ width: 0 }}
-            whileInView={{ width: 64 }}
-            viewport={{ once: true }}
+            initial={{
+              width: 0,
+            }}
+            whileInView={{
+              width: 65,
+            }}
+            viewport={{
+              once: true,
+            }}
             transition={{
               duration: 0.7,
               delay: 0.2,
@@ -132,16 +140,9 @@ export default function About() {
           />
         </motion.div>
 
-        {/* =====================================================
-            MAIN CONTENT
-        ====================================================== */}
-
-        <div className="grid items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
-
-          {/* =================================================
-              IMAGE
-          ================================================== */}
-
+        {/* Main Content */}
+        <div className="grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+          {/* Left Image */}
           <motion.div
             className="flex justify-center lg:justify-start"
             initial={{
@@ -162,9 +163,7 @@ export default function About() {
             }}
           >
             <div className="relative">
-
-              {/* Decorative Border */}
-
+              {/* Decorative Background */}
               <motion.div
                 className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl bg-[#6875F5]"
                 initial={{
@@ -186,8 +185,7 @@ export default function About() {
                 }}
               />
 
-              {/* Image */}
-
+              {/* Profile Image */}
               <motion.div
                 className="relative z-10 overflow-hidden rounded-2xl shadow-2xl"
                 whileHover={{
@@ -200,24 +198,27 @@ export default function About() {
               >
                 <img
                   src="/images/profile1.jpeg"
-                  alt="Md Moshiur Rahman"
-                  className="h-[380px] w-[320px] object-cover"
+                  alt="Mohammad Moshiur Rahman"
+                  className="h-[430px] w-[330px] object-cover"
                 />
 
-                {/* Image Overlay */}
-
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-[#6875F5]/25 to-transparent"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-t from-[#6875F5]/30 via-transparent to-transparent"
+                  initial={{
+                    opacity: 0,
+                  }}
+                  whileHover={{
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                  }}
                 />
               </motion.div>
 
-              {/* Floating Badge */}
-
+              {/* Floating Profession Card */}
               <motion.div
-                className="absolute -bottom-7 -left-7 z-20 hidden rounded-xl border border-gray-100 bg-white px-5 py-4 shadow-xl sm:block"
+                className="absolute -bottom-8 -left-6 z-20 hidden max-w-[250px] rounded-2xl border border-gray-100 bg-white px-5 py-4 shadow-xl sm:block"
                 initial={{
                   opacity: 0,
                   y: 20,
@@ -237,29 +238,22 @@ export default function About() {
                   y: [0, -5, 0],
                 }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#6875F5]/10 text-[#6875F5]">
-                    <Network size={20} />
-                  </div>
+                <p className="text-xs font-medium uppercase tracking-wider text-gray-400">
+                  Profession
+                </p>
 
-                  <div>
-                    <p className="text-xs text-gray-400">
-                      Focus Area
-                    </p>
+                <p className="mt-1 text-sm font-bold leading-5 text-gray-800">
+                  Network & Hardware Engineer
+                </p>
 
-                    <p className="text-sm font-bold text-gray-700">
-                      Network & NOC
-                    </p>
-                  </div>
-                </div>
+                <p className="mt-1 text-xs font-semibold text-[#6875F5]">
+                  Graphic Designer
+                </p>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* =================================================
-              TEXT CONTENT
-          ================================================== */}
-
+          {/* Right Content */}
           <motion.div
             initial={{
               opacity: 0,
@@ -271,22 +265,28 @@ export default function About() {
             }}
             viewport={{
               once: true,
-              amount: 0.25,
+              amount: 0.2,
             }}
             transition={{
               duration: 0.8,
               ease: "easeOut",
             }}
           >
-
             {/* Small Label */}
-
             <motion.div
               className="mb-3 flex items-center gap-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              initial={{
+                opacity: 0,
+              }}
+              whileInView={{
+                opacity: 1,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                delay: 0.2,
+              }}
             >
               <span className="h-px w-8 bg-[#6875F5]" />
 
@@ -296,78 +296,138 @@ export default function About() {
             </motion.div>
 
             {/* Heading */}
-
             <h3 className="text-2xl font-bold leading-tight text-gray-800 md:text-3xl">
-              Passionate About{" "}
+              Network & Hardware Engineer{" "}
               <span className="text-[#6875F5]">
-                Network Engineering
+                & Graphic Designer
               </span>
             </h3>
 
-            {/* Paragraph */}
+            {/* About Description */}
+            <div className="mt-5 space-y-4">
+              <p className="leading-8 text-gray-600">
+                I&apos;m a passionate Network & Hardware Engineer and Graphic
+                Designer with a strong interest in technology, IT
+                infrastructure, and creative design. I enjoy exploring new
+                technologies and finding practical solutions to technical
+                challenges.
+              </p>
 
-            <p className="mt-5 leading-8 text-gray-600">
-              I am a passionate Network Engineer with a strong interest
-              in network infrastructure, monitoring, troubleshooting and
-              system reliability. I enjoy solving technical problems and
-              ensuring that network services remain stable, secure and
-              available.
-            </p>
+              <p className="leading-8 text-gray-600">
+                My expertise includes network configuration and
+                troubleshooting, computer hardware maintenance, system support,
+                and graphic design. I enjoy working on both technical and
+                creative projects, where I can use my problem-solving skills
+                and creativity to deliver effective results.
+              </p>
 
-            <p className="mt-4 leading-8 text-gray-600">
-              My goal is to build a strong career in Network and NOC
-              Engineering by continuously improving my knowledge of
-              routing, switching, network monitoring, server systems and
-              network security.
-            </p>
-
-            {/* =================================================
-                INFORMATION
-            ================================================== */}
-
-            <div className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
-              {infoItems.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  className="group border-b border-gray-100 pb-3"
-                  initial={{
-                    opacity: 0,
-                    y: 15,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    delay: 0.15 * index,
-                    duration: 0.5,
-                  }}
-                >
-                  <p className="text-xs uppercase tracking-wider text-gray-400">
-                    {item.label}
-                  </p>
-
-                  <p className="mt-1 text-sm font-semibold text-gray-700 transition-colors duration-300 group-hover:text-[#6875F5]">
-                    {item.value}
-                  </p>
-                </motion.div>
-              ))}
+              <p className="leading-8 text-gray-600">
+                I believe that continuous learning is the key to growth.
+                I&apos;m always eager to improve my skills, learn new
+                technologies, and take on new challenges. My goal is to build a
+                successful career in the technology sector by combining my
+                technical knowledge, practical experience, and creativity.
+              </p>
             </div>
 
-            {/* =================================================
-                DOWNLOAD CV
-            ================================================== */}
+            {/* Personal Information */}
+            <motion.div
+              className="mt-8"
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.6,
+              }}
+            >
+              <h4 className="mb-5 text-lg font-bold text-gray-800">
+                Personal Information
+              </h4>
 
+              <div className="grid gap-4 sm:grid-cols-2">
+                {infoItems.map((item, index) => {
+                  const Icon = item.icon;
+
+                  const content = (
+                    <motion.div
+                      className="group flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50/60 p-4 transition-all duration-300 hover:border-[#6875F5]/20 hover:bg-white hover:shadow-lg"
+                      initial={{
+                        opacity: 0,
+                        y: 20,
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      viewport={{
+                        once: true,
+                      }}
+                      transition={{
+                        delay: index * 0.07,
+                        duration: 0.4,
+                      }}
+                      whileHover={{
+                        y: -3,
+                      }}
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#6875F5]/10 text-[#6875F5] transition-all duration-300 group-hover:bg-[#6875F5] group-hover:text-white">
+                        <Icon size={18} />
+                      </div>
+
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400">
+                          {item.label}
+                        </p>
+
+                        <p className="mt-1 truncate text-sm font-semibold text-gray-700 transition-colors group-hover:text-[#6875F5]">
+                          {item.value}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+
+                  return item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target={
+                        item.label === "Website" ||
+                        item.label === "WhatsApp"
+                          ? "_blank"
+                          : undefined
+                      }
+                      rel={
+                        item.label === "Website" ||
+                        item.label === "WhatsApp"
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={item.label}>{content}</div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+            {/* Download CV Button */}
             <motion.a
               href="/cv.pdf"
               download
-              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#6875F5] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#6875F5]/20"
+              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-[#6875F5] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#6875F5]/20"
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 15px 35px rgba(104,117,245,0.25)",
+                boxShadow: "0 15px 35px rgba(104,117,245,0.30)",
               }}
               whileTap={{
                 scale: 0.95,
@@ -378,97 +438,19 @@ export default function About() {
               <span>DOWNLOAD CV</span>
 
               <motion.span
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                animate={{
+                  x: [0, 3, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                }}
               >
                 <ArrowRight size={16} />
               </motion.span>
             </motion.a>
           </motion.div>
         </div>
-
-        {/* =====================================================
-            CORE AREAS
-        ====================================================== */}
-
-        <motion.div
-          className="mt-24"
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-        >
-          <div className="mb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[3px] text-[#6875F5]">
-              Core Areas
-            </p>
-
-            <h3 className="mt-2 text-2xl font-bold text-gray-800">
-              What I Focus On
-            </h3>
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {skills.map((skill, index) => {
-              const Icon = skill.icon;
-
-              return (
-                <motion.div
-                  key={skill.title}
-                  className="group rounded-2xl border border-gray-100 bg-gray-50/70 p-6 transition-colors duration-300 hover:border-[#6875F5]/20 hover:bg-white hover:shadow-xl"
-                  initial={{
-                    opacity: 0,
-                    y: 30,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.2,
-                  }}
-                  transition={{
-                    delay: index * 0.1,
-                    duration: 0.5,
-                  }}
-                  whileHover={{
-                    y: -7,
-                  }}
-                >
-                  <motion.div
-                    className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#6875F5]/10 text-[#6875F5]"
-                    whileHover={{
-                      scale: 1.1,
-                      rotate: 5,
-                    }}
-                  >
-                    <Icon size={21} />
-                  </motion.div>
-
-                  <h4 className="mt-5 text-base font-bold text-gray-800">
-                    {skill.title}
-                  </h4>
-
-                  <p className="mt-2 text-sm leading-6 text-gray-500">
-                    {skill.text}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );
