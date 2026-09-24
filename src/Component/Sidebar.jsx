@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import {
   Home,
   User,
@@ -246,10 +247,8 @@ export default function Sidebar() {
     /*
       Initial Load
     */
-    if (window.scrollY < 80) {
-      setActiveSection("home");
-    } else {
-      updateActiveSection();
+    if (window.scrollY >= 80) {
+      window.requestAnimationFrame(updateActiveSection);
     }
 
     window.addEventListener("scroll", handleScroll, {
@@ -502,9 +501,11 @@ export default function Sidebar() {
                   shadow-[0_8px_25px_rgba(0,0,0,0.18)]
                 "
               >
-                <img
+                <Image
                   src="/images/profile1.jpeg"
                   alt="Mohammad Moshiur Rahman"
+                  width={110}
+                  height={110}
                   className="h-full w-full object-cover"
                 />
               </motion.div>
@@ -637,9 +638,11 @@ export default function Sidebar() {
 
         <div className="flex items-center gap-3">
           <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-[#6875F5]">
-            <img
+            <Image
               src="/images/profile1.jpeg"
               alt="Mohammad Moshiur Rahman"
+              width={48}
+              height={48}
               className="h-full w-full object-cover"
             />
           </div>
@@ -788,9 +791,11 @@ export default function Sidebar() {
 
               <div className="mb-5 flex flex-col items-center border-b border-gray-100 pb-6">
                 <div className="h-20 w-20 overflow-hidden rounded-full border-4 border-[#6875F5] p-1 shadow-md">
-                  <img
+                  <Image
                     src="/images/profile1.jpeg"
                     alt="Mohammad Moshiur Rahman"
+                    width={80}
+                    height={80}
                     className="h-full w-full rounded-full object-cover"
                   />
                 </div>

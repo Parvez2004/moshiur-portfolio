@@ -8,6 +8,7 @@ import {
   FaBehance,
 } from "react-icons/fa";
 
+import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -208,9 +209,12 @@ export default function Hero() {
               ease: "easeInOut",
             }}
           >
-            <img
+            <Image
               src="/images/profile1.jpeg"
               alt="Mohammad Moshiur Rahman"
+              width={144}
+              height={144}
+              priority
               className="h-full w-full object-cover"
             />
           </motion.div>

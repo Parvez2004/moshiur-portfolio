@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   Download,
@@ -196,9 +197,12 @@ export default function About() {
                   duration: 0.35,
                 }}
               >
-                <img
+                <Image
                   src="/images/profile1.jpeg"
                   alt="Mohammad Moshiur Rahman"
+                  width={330}
+                  height={430}
+                  sizes="(max-width: 1024px) 330px, 28vw"
                   className="h-[430px] w-[330px] object-cover"
                 />
 

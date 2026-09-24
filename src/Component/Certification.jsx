@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Award, Eye, X } from "lucide-react";
 
@@ -147,13 +148,19 @@ export default function Certification() {
 
   const openCertificate = (certificate) => {
     setSelectedCertificate(certificate);
-    document.body.style.overflow = "hidden";
   };
 
   const closeCertificate = () => {
     setSelectedCertificate(null);
-    document.body.style.overflow = "auto";
   };
+
+  useEffect(() => {
+    document.body.style.overflow = selectedCertificate ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedCertificate]);
 
   return (
     <>
@@ -205,7 +212,7 @@ export default function Certification() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((certificate, index) => (
               <motion.div
-                key={certificate.title}
+                key={certificate.image}
                 initial={{
                   opacity: 0,
                   y: 40,
@@ -232,9 +239,12 @@ export default function Certification() {
                   onClick={() => openCertificate(certificate)}
                   className="group relative aspect-[4/3] cursor-pointer overflow-hidden bg-gray-100"
                 >
-                  <img
+                  <Image
                     src={certificate.image}
                     alt={certificate.title}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
 
@@ -370,9 +380,11 @@ export default function Certification() {
               onClick={(e) => e.stopPropagation()}
               className="relative max-h-[90vh] max-w-[95vw] cursor-default rounded-2xl bg-white p-2 shadow-2xl sm:max-w-[90vw]"
             >
-              <img
+              <Image
                 src={selectedCertificate.image}
                 alt={selectedCertificate.title}
+                width={1600}
+                height={1200}
                 className="max-h-[85vh] max-w-full rounded-xl object-contain"
               />
             </motion.div>

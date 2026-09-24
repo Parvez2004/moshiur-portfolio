@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Eye, X, ZoomIn } from "lucide-react";
 
@@ -11,9 +12,10 @@ import { Eye, X, ZoomIn } from "lucide-react";
 
 const galleryItems = Array.from({ length: 53 }, (_, index) => {
   const imageNumber = index + 13;
+  const extension = [54, 57, 59].includes(imageNumber) ? "JPG" : "jpg";
 
   return {
-    image: `/images/gallery/${imageNumber}.jpg`,
+    image: `/images/gallery/${imageNumber}.${extension}`,
     alt: `Gallery Image ${imageNumber}`,
   };
 });
@@ -23,13 +25,19 @@ export default function Gallery() {
 
   const openImage = (item) => {
     setSelectedImage(item);
-    document.body.style.overflow = "hidden";
   };
 
   const closeImage = () => {
     setSelectedImage(null);
-    document.body.style.overflow = "auto";
   };
+
+  useEffect(() => {
+    document.body.style.overflow = selectedImage ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
 
   return (
     <>
@@ -133,10 +141,12 @@ export default function Gallery() {
               >
                 {/* Image */}
 
-                <img
+                <Image
                   src={item.image}
                   alt={item.alt}
+                  fill
                   loading="lazy"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
 
@@ -278,9 +288,11 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
               className="relative max-h-[90vh] max-w-[95vw] cursor-default rounded-2xl bg-white p-2 shadow-2xl sm:max-w-[90vw]"
             >
-              <img
+              <Image
                 src={selectedImage.image}
                 alt={selectedImage.alt}
+                width={1600}
+                height={1200}
                 className="max-h-[85vh] max-w-full rounded-xl object-contain"
               />
             </motion.div>

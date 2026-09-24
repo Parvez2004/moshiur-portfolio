@@ -2,49 +2,17 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Play } from "lucide-react";
 
 const videos = [
   {
-    id: "VIDEO_ID_1",
-    title: "Network Engineering Video",
-  },
-  {
-    id: "VIDEO_ID_2",
-    title: "Network Configuration",
-  },
-  {
-    id: "VIDEO_ID_3",
-    title: "Network Troubleshooting",
-  },
-  {
-    id: "VIDEO_ID_4",
-    title: "Network Monitoring",
-  },
-  {
-    id: "VIDEO_ID_5",
-    title: "Routing & Switching",
-  },
-  {
-    id: "VIDEO_ID_6",
-    title: "Network Security",
-  },
-  {
-    id: "VIDEO_ID_7",
-    title: "Server & Network Infrastructure",
-  },
-  {
-    id: "VIDEO_ID_8",
-    title: "NOC Operations",
+    src: "/videos/intro.mp4",
+    title: "Network Engineering Introduction",
   },
 ];
 
 export default function Video() {
   const [showMore, setShowMore] = useState(false);
-
-  const visibleVideos = showMore
-    ? videos
-    : videos.slice(0, 6);
 
   return (
     <section
@@ -95,7 +63,7 @@ export default function Video() {
           layout
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
-          {visibleVideos.map((video, index) => (
+          {videos.slice(0, showMore ? videos.length : 6).map((video, index) => (
             <motion.div
               key={video.id}
               layout
@@ -122,13 +90,15 @@ export default function Video() {
             >
               {/* Video */}
               <div className="relative aspect-video overflow-hidden bg-gray-100">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  className="h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                <video
+                  controls
+                  preload="metadata"
+                  poster="/images/video-poster.png"
+                  className="h-full w-full object-cover"
+                >
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support the video element.
+                </video>
 
                 {/* Play Decoration */}
                 <div className="pointer-events-none absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
